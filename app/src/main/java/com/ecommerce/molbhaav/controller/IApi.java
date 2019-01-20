@@ -1,20 +1,17 @@
-package com.ecommerce.molbhaav.Controller;
+package com.ecommerce.molbhaav.controller;
 
 
 
 
 
-import com.bumptech.glide.request.SingleRequest;
-import com.ecommerce.molbhaav.Request.LoginRequest;
-import com.ecommerce.molbhaav.Request.SignInRequest;
-import com.ecommerce.molbhaav.Response.LoginResponse;
-import com.ecommerce.molbhaav.Response.SignInResponse;
+import com.ecommerce.molbhaav.request.LoginRequest;
+import com.ecommerce.molbhaav.request.SignInRequest;
+import com.ecommerce.molbhaav.response.LoginResponse;
+import com.ecommerce.molbhaav.response.SignInResponse;
 
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface IApi {

@@ -1,12 +1,11 @@
-package com.ecommerce.molbhaav.Request;
-
+package com.ecommerce.molbhaav.request;
 
 
 
 import com.google.gson.annotations.SerializedName;
 
 
-public class SignInRequest{
+public class LoginRequest{
 
     @SerializedName("password")
     private String password;
@@ -19,6 +18,9 @@ public class SignInRequest{
 
     @SerializedName("emailId")
     private String emailId;
+
+    @SerializedName("userId")
+    private String userId;
 
     public void setPassword(String password){
         this.password = password;
@@ -52,14 +54,23 @@ public class SignInRequest{
         return emailId;
     }
 
+    public void setUserId(String userId){
+        this.userId = userId;
+    }
+
+    public String getUserId(){
+        return userId;
+    }
+
     @Override
     public String toString(){
         return
-                "Response{" +
+                "LoginRequest{" +
                         "password = '" + password + '\'' +
                         ",address = '" + address + '\'' +
                         ",name = '" + name + '\'' +
                         ",emailId = '" + emailId + '\'' +
+                        ",userId = '" + userId + '\'' +
                         "}";
     }
 }
