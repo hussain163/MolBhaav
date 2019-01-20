@@ -1,4 +1,4 @@
-package com.ecommerce.molbhaav.Activities;
+package com.ecommerce.molbhaav.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -18,33 +18,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-
-import com.ecommerce.molbhaav.Controller.IApi;
+import com.ecommerce.molbhaav.controller.IApi;
 import com.ecommerce.molbhaav.R;
-import com.ecommerce.molbhaav.Request.LoginRequest;
-import com.ecommerce.molbhaav.Response.LoginResponse;
+import com.ecommerce.molbhaav.request.LoginRequest;
+import com.ecommerce.molbhaav.response.LoginResponse;
 
-import okhttp3.OkHttpClient;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-    public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
         String user;
         EditText ed;
         EditText ed1;

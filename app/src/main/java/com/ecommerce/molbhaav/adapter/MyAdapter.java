@@ -1,4 +1,4 @@
-package com.ecommerce.molbhaav.Adapter;
+package com.ecommerce.molbhaav.adapter;
 
 
 
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ecommerce.molbhaav.Controller.ItemData;
+import com.ecommerce.molbhaav.controller.ItemData;
 import com.ecommerce.molbhaav.R;
 
 
