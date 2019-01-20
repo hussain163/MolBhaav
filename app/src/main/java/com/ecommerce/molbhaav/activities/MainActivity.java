@@ -1,4 +1,4 @@
-package com.ecommerce.molbhaav.Activities;
+package com.ecommerce.molbhaav.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
