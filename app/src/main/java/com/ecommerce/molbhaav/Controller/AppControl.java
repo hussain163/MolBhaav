@@ -21,5 +21,6 @@ public class AppControl extends Application {
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(client).build();
         }
+        System.out.println("chk");
     }
 }
