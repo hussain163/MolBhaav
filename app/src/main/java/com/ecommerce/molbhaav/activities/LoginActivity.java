@@ -18,7 +18,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-import com.ecommerce.molbhaav.controller.IApi;
+import com.ecommerce.molbhaav.interfaceRequest.IApi;
 import com.ecommerce.molbhaav.R;
 import com.ecommerce.molbhaav.request.LoginRequest;
 import com.ecommerce.molbhaav.response.LoginResponse;
