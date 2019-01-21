@@ -24,6 +24,9 @@ public class HomePage extends Activity {
         ItemData itemsData[] = { new ItemData("Electronics",R.drawable.electronic),
                 new ItemData("Fashion",R.drawable.fashion),
                 new ItemData("Grocery",R.drawable.grocery),
+                new ItemData("BeAuTy",R.drawable.beauty),
+                new ItemData("SpOrtS",R.drawable.sport)
+
         };
 
 
