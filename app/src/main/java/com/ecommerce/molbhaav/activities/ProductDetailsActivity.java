@@ -1,7 +1,11 @@
 package com.ecommerce.molbhaav.activities;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,9 +15,15 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.ecommerce.molbhaav.R;
+import com.ecommerce.molbhaav.adapter.staticAttributesListAdapter;
 import com.ecommerce.molbhaav.interfaceRequest.IApiClass;
 import com.ecommerce.molbhaav.request.AddToCart;
 import com.ecommerce.molbhaav.response.ProductDetailsResponse;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -31,6 +41,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_details);
+        final RecyclerView recyclerView=findViewById(R.id.attributesRV);
 
         final ImageView productImageView = (ImageView) findViewById(R.id.imageView);
         final TextView productName = (TextView) findViewById(R.id.productName);
@@ -38,6 +49,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         final TextView productUsp = (TextView) findViewById(R.id.productUsp);
         final TextView soldBy = (TextView) findViewById(R.id.merchantName);
         final TextView description=(TextView) findViewById(R.id.productDescription);
+        final Map<String, String> attributeList = new HashMap<>();
 
         OkHttpClient client = new OkHttpClient.Builder().build();
         final Retrofit retrofit = new Retrofit.Builder()
@@ -57,10 +69,18 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 productUsp.setText(response.body().getProductUsp());
                 soldBy.setText(response.body().getMerchantDTOList().get(0).getName());
                 description.setText(response.body().getProductDescription());
+                recyclerView.setLayoutManager( new LinearLayoutManager(ProductDetailsActivity.this));
 
                 pId = response.body().getProductId();
                 uId = "NEEDS TO BE GOTTEN FROM SHARED PREFERENCES";
                 mId = response.body().getMerchantDTOList().get(0).getMerchantId();
+
+                for(int i=0;i<response.body().getStaticAttributeList().size();i++){
+                    attributeList.put(response.body().getStaticAttributeList().get(i).getAttribute(),response.body().getStaticAttributeList().get(i).getAttributeDescription());
+                    System.out.println(attributeList.get(response.body().getStaticAttributeList().get(i).getAttribute()));
+                }
+                staticAttributesListAdapter staticAttributesListAdapter=new staticAttributesListAdapter(attributeList);
+                recyclerView.setAdapter(staticAttributesListAdapter);
             }
 
             @Override
