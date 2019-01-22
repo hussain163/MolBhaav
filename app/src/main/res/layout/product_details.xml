@@ -34,7 +34,7 @@
             app:layout_constraintGuide_percent="0.33" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/productImageView"
             android:layout_width="349dp"
             android:layout_height="326dp"
             android:layout_marginStart="8dp"
@@ -55,7 +55,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/productImageView" />
 
         <TextView
             android:id="@+id/productPrice"
