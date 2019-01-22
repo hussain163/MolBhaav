@@ -8,25 +8,29 @@ public class AddToCart {
 
     @SerializedName("userId")
     @Expose
-    private String userId;
+    private long userId;
     @SerializedName("productId")
     @Expose
     private String productId;
     @SerializedName("merchantId")
     @Expose
     private String merchantId;
+    @SerializedName("quantity")
+    @Expose
+    private int quantity;
 
-    public AddToCart(String userId, String productId, String merchantId) {
+    public AddToCart(long userId, String productId, String merchantId, int quantity) {
         this.userId = userId;
         this.productId = productId;
         this.merchantId = merchantId;
+        this.quantity=quantity;
     }
 
-    public String getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
@@ -46,6 +50,13 @@ public class AddToCart {
         this.merchantId = merchantId;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     @Override
     public String toString() {

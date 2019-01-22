@@ -9,16 +9,20 @@ import android.widget.TextView;
 
 import com.ecommerce.molbhaav.R;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
-public class staticAttributesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class StaticAttributesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    public Map<String, String> attributesList = new HashMap<>();
+    private List<String> attributeKey=new ArrayList<>();
+    private List<String> attributesValue = new ArrayList<>();
 
-    public staticAttributesListAdapter(Map<String, String> attributesList) {
-        this.attributesList = attributesList;
+    public StaticAttributesListAdapter(List<String> attributeKey, List<String> attributesValue) {
+        this.attributeKey = attributeKey;
+        this.attributesValue = attributesValue;
     }
 
     @NonNull
@@ -30,35 +34,28 @@ public class staticAttributesListAdapter extends RecyclerView.Adapter<RecyclerVi
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-        Iterator hmIterator = attributesList.entrySet().iterator();
-        while (hmIterator.hasNext()) {
-            Map.Entry mapElement = (Map.Entry) hmIterator.next();
-            ((TextViewHolder) viewHolder).bind(mapElement.getKey().toString(), mapElement.getValue().toString());
-        }
+            ((TextViewHolder) viewHolder).bind(attributeKey.get(i), attributesValue.get(i));
     }
 
-        @Override
-        public int getItemCount () {
+    @Override
+    public int getItemCount () {
 
-        return attributesList.size();
+        return attributeKey.size();
+    }
+
+    class TextViewHolder extends RecyclerView.ViewHolder {
+        TextView key1;
+        TextView value1;
+
+        public TextViewHolder(@NonNull View itemView) {
+            super(itemView);
+            key1 = itemView.findViewById(R.id.key1);
+            value1 = itemView.findViewById(R.id.value1);
         }
 
-        class TextViewHolder extends RecyclerView.ViewHolder {
-            public TextView key1;
-            public TextView value1;
-            public TextView key2;
-            public TextView value2;
-
-            public TextViewHolder(@NonNull View itemView) {
-                super(itemView);
-                key1 = itemView.findViewById(R.id.key1);
-                value1 = itemView.findViewById(R.id.value1);
-
-            }
-
-            public void bind(String key1, String value1) {
-                this.key1.setText(key1);
-                this.value1.setText(value1);
-            }
+        public void bind(String key1, String value1) {
+            this.key1.setText(key1);
+            this.value1.setText(value1);
         }
+    }
 }

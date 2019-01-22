@@ -6,6 +6,7 @@ public class MerchantDTOListItem{
 	private double price;
 	private String name;
 	private String emailId;
+	private double rating;
 
 	public void setQuantity(int quantity){
 		this.quantity = quantity;
@@ -47,15 +48,23 @@ public class MerchantDTOListItem{
 		return emailId;
 	}
 
+	public double getRating() {
+		return rating;
+	}
+
+	public void setRating(double rating) {
+		this.rating = rating;
+	}
+
 	@Override
- 	public String toString(){
-		return 
-			"MerchantDTOListItem{" + 
-			"quantity = '" + quantity + '\'' + 
-			",merchantId = '" + merchantId + '\'' + 
-			",price = '" + price + '\'' + 
-			",name = '" + name + '\'' + 
-			",emailId = '" + emailId + '\'' + 
-			"}";
-		}
+	public String toString() {
+		return "MerchantDTOListItem{" +
+				"quantity=" + quantity +
+				", merchantId='" + merchantId + '\'' +
+				", price=" + price +
+				", name='" + name + '\'' +
+				", emailId='" + emailId + '\'' +
+				", rating=" + rating +
+				'}';
+	}
 }
