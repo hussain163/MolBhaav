@@ -16,9 +16,12 @@ import com.ecommerce.molbhaav.adapter.IMerchantContainerCommunicator;
 import com.ecommerce.molbhaav.adapter.MerchantListAdapter;
 import com.ecommerce.molbhaav.interfaceRequest.IApiClass;
 import com.ecommerce.molbhaav.request.AddToCart;
+import com.ecommerce.molbhaav.response.MerchantDTOListItem;
 import com.ecommerce.molbhaav.response.ProductDetailsResponse;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -53,7 +56,7 @@ public class MerchantActivity extends AppCompatActivity implements IMerchantCont
         final List<Double> merchantPriceList=new ArrayList<>();
         final List<Double> merchantRatingList=new ArrayList<>();
         final ImageView productImageView = (ImageView) findViewById(R.id.imageView);
-        final TextView productName = (TextView) findViewById(R.id.productName);
+        final TextView productName = (TextView) findViewById(R.id.pName);
         final TextView productPrice = (TextView) findViewById(R.id.productPrice);
         final TextView description=(TextView) findViewById(R.id.productDescription);
 
@@ -61,12 +64,20 @@ public class MerchantActivity extends AppCompatActivity implements IMerchantCont
         iApiClass.getHomeResponse().enqueue(new Callback<ProductDetailsResponse>() {
             @Override
             public void onResponse(Call<ProductDetailsResponse> call, Response<ProductDetailsResponse> response) {
+                Collections.sort(response.body().getMerchantDTOList(), new Comparator<MerchantDTOListItem>() {
+                    @Override
+                    public int compare(MerchantDTOListItem o1, MerchantDTOListItem o2) {
+                        return Double.compare(o1.getRating(),o2.getRating());
+                    }
+                });
+                System.out.println(response.body().getMerchantDTOList());
                 for(int i=0;i<response.body().getMerchantDTOList().size();i++) {
                     //System.out.println(response.body().getMerchantDTOList().get(i).getName());
                     merchantIdList.add(response.body().getMerchantDTOList().get(i).getMerchantId());
                     merchantNameList.add(response.body().getMerchantDTOList().get(i).getName());
                     merchantPriceList.add(response.body().getMerchantDTOList().get(i).getPrice());
                     merchantRatingList.add(response.body().getMerchantDTOList().get(i).getRating());
+
                 }
 
                 pId= response.body().getProductId();
@@ -90,7 +101,7 @@ public class MerchantActivity extends AppCompatActivity implements IMerchantCont
             }
         });
 
-//        final Button addToCart = (Button) findViewById(R.id.addToCart);
+//        final Button addToCart = (Button) findViewById(R.id.addToCartButton);
 //        addToCart.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -124,6 +135,9 @@ public class MerchantActivity extends AppCompatActivity implements IMerchantCont
     public void onClickOfButton(int position){
         merchantContainerPosition=position;
         System.out.println(merchantContainerPosition);
+        AddToCart cartObject = new AddToCart(uId, pId, mId,1);
+
+        sendNetworkRequest(cartObject);
     }
 
 }

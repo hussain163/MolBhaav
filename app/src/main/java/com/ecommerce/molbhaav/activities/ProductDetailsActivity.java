@@ -19,9 +19,7 @@ import com.ecommerce.molbhaav.request.AddToCart;
 import com.ecommerce.molbhaav.response.ProductDetailsResponse;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -47,7 +45,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.product_details);
         final RecyclerView recyclerView=findViewById(R.id.attributesRV);
         final ImageView productImageView = (ImageView) findViewById(R.id.productImageView);
-        final TextView productName = (TextView) findViewById(R.id.productName);
+        final TextView productName = (TextView) findViewById(R.id.pName);
         final TextView productPrice = (TextView) findViewById(R.id.productPrice);
         final TextView productUsp = (TextView) findViewById(R.id.productUsp);
         final TextView soldBy = (TextView) findViewById(R.id.merchantName);
@@ -101,8 +99,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AddToCart cartObject = new AddToCart(uId, pId, mId,1);
-
                 sendNetworkRequest(cartObject);
+                Intent intent=new Intent(ProductDetailsActivity.this, MyCartActivity.class);
+                startActivity(intent);
 
             }
         });
@@ -114,6 +113,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     public void sendNetworkRequest(AddToCart cartObject){

@@ -6,6 +6,7 @@ public class MerchantDTOListItem{
 	private double price;
 	private String name;
 	private String emailId;
+	private int rank;
 	private double rating;
 
 	public void setQuantity(int quantity){
@@ -48,6 +49,14 @@ public class MerchantDTOListItem{
 		return emailId;
 	}
 
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+
 	public double getRating() {
 		return rating;
 	}
@@ -64,6 +73,7 @@ public class MerchantDTOListItem{
 				", price=" + price +
 				", name='" + name + '\'' +
 				", emailId='" + emailId + '\'' +
+				", rank=" + rank +
 				", rating=" + rating +
 				'}';
 	}

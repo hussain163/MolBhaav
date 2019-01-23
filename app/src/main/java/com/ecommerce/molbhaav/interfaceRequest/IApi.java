@@ -5,6 +5,7 @@ package com.ecommerce.molbhaav.interfaceRequest;
 
 
 import com.ecommerce.molbhaav.request.LoginRequest;
+import com.ecommerce.molbhaav.request.SaveToCartRequest;
 import com.ecommerce.molbhaav.request.SignInRequest;
 import com.ecommerce.molbhaav.response.LoginResponse;
 import com.ecommerce.molbhaav.response.SignInResponse;
@@ -25,7 +26,5 @@ public interface IApi {
     @POST("/users/login")
     public Call<LoginResponse>  login(@Body LoginRequest loginRequest);
 
-//    @GET("config.json")
-//    public Call<Object>
 
 }

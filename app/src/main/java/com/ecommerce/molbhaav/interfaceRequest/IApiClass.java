@@ -1,6 +1,7 @@
 package com.ecommerce.molbhaav.interfaceRequest;
 
 import com.ecommerce.molbhaav.request.AddToCart;
+import com.ecommerce.molbhaav.request.SaveToCartRequest;
 import com.ecommerce.molbhaav.response.ProductDetailsResponse;
 
 import retrofit2.Call;
@@ -13,5 +14,9 @@ public interface IApiClass {
     public Call<ProductDetailsResponse> getHomeResponse();
 
     @POST("carts/addToCart")
-    public Call<AddToCart> addToCart(@Body AddToCart cart );
+    public Call<AddToCart> addToCart(@Body AddToCart cart);
+
+    @POST("/saveCart")
+    public Call<SaveToCartRequest> saveToCart(@Body SaveToCartRequest saveToCartRequest);
+
 }
